@@ -37,7 +37,7 @@
             const m = new Movie(movie)
             m.displayOnDOM()
         })
-
+        
     } 
         
     deleteMovie(id){
