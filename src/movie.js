@@ -22,7 +22,7 @@ class Movie {
         this.element.innerHTML += `
             <div>
                 <h3>${this.title}</h3>
-                <img src='${this.image_url}' width = 150px />
+                <img id="movie-poster" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>
             </div>
             <button id='delete-bttn'>Delete</button>
@@ -50,6 +50,8 @@ class Movie {
         <form>
         `
     }
+
+
 
 
 

@@ -1,8 +1,8 @@
 class Review {
-    
+
     static all = []
-    static moviesContainer = document.getElementById("review-container")
-    static movieForm = document.getElementById("form-container")
+    static reviewsContainer = document.getElementById("review-container")
+    static reviewForm = document.getElementById("form-container")
 
     constructor({reviewer, post, movie_id}){
         this.reviewer = reviewer
@@ -29,11 +29,9 @@ class Review {
     static renderReviewForm() {
         Movie.movieForm.innerHTML += `
         <form id="new-movie-form">
-        <input type="text" id="title"> :Title
+        <input type="text" id="reviewer"> :Your reviewer
         <br>
-        <input type="text" id="image_url"> :Poster
-        <br>
-        <input type="text" id="description"> :Description
+        <input type="text" id="post"> :post
         <br>
         <input type="submit" id="create">
         <form>

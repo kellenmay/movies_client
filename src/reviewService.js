@@ -1,4 +1,5 @@
 class ReviewService {
+
     constructor(endpoint){
         this.endpoint = endpoint
     }
@@ -6,8 +7,8 @@ class ReviewService {
 
     createReview(){
         const review = {
-            title: document.getElementById('name').value,
-            image_url: document.getElementById('comment').value,
+            title: document.getElementById('reviewer').value,
+            image_url: document.getElementById('post').value
         }
 
         const configObj = {
