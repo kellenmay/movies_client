@@ -10,10 +10,12 @@ class Movie {
         this.image_url = image_url
         this.description = description
 
-        this.element = document.createElement('li')
+        this.element = document.createElement('div')
         this.element.dataset.id = this.id
         this.element.id = `movie-${this.id}`
-        this.element.addEventListener('click', this.handleClick)
+        this.element.addEventListener('click', this.handleClickDelete)
+  
+   
 
         Movie.all.push(this)
     }
@@ -35,6 +37,7 @@ class Movie {
 
     displayOnDOM(){
         Movie.moviesContainer.append(this.movieHTML())
+        this.element.querySelector("img").addEventListener('click', this.handleClickReview) 
     }
 
     static renderForm() {
@@ -55,11 +58,15 @@ class Movie {
 
 
 
-    handleClick = () => {
+    handleClickDelete = () => {
         if (event.target.innerText === 'Delete'){
             this.element.remove()
             movieService.deleteMovie(this.id)
         }
+    }
+
+    handleClickReview() {
+        Review.renderReviewForm()
     }
 
 }

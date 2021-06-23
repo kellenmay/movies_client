@@ -3,7 +3,6 @@ const movieService = new MovieService(base_url)
 
 Movie.movieForm.addEventListener('submit', handleSubmit)
 
-Movie.moviesContainer.addEventListener('click', displayReview)
 
 movieService.getMovies()
 
@@ -15,9 +14,3 @@ function handleSubmit() {
     event.target.reset()
 }
 
-
-function displayReview() {
-    ReviewService.createReview()
-
-
-}
