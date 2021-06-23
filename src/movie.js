@@ -65,8 +65,12 @@ class Movie {
         }
     }
 
-    handleClickReview() {
+    handleClickReview = () => {
+
         Review.renderReviewForm()
+        event.target.removeEventListener('click', this.handleClickReview)
+        // toggle click on and off
+        // add review to movie DIV
     }
 
 }
