@@ -6,11 +6,14 @@ class ReviewService {
 
 
     createReview(){
+        event.preventDefault();
+       
         const review = {
-            title: document.getElementById('reviewer').value,
-            image_url: document.getElementById('post').value
+            reviewer: document.getElementById('reviewer').value,
+            comment: document.getElementById('comment').value,
+            movie_id: parseInt(this.parentNode.parentNode.dataset.id)
         }
-
+      
         const configObj = {
             method: 'POST',
             headers: {
@@ -18,18 +21,22 @@ class ReviewService {
             },
             body: JSON.stringify(review)
         }
-
-        fetch(`${this.endpoint}/movie_reviews`, configObj)
+          
+        fetch(`${reviewService.endpoint}/movie_reviews`, configObj)
         .then(resp => resp.json())
         .then(review => {
-            const r = new review(review)
-            r.displayOnDOM()
+            const r = new Review(review) 
+            this.parentNode.parentNode.innerHTML += `
+                ${r.reviewer}
+                ${r.comment}
+            `
+            // r.displayOnDOM()
         })
         
     }
 
     getReviews(){
-        fetch(`${this.endpoint}/review_reviews`)
+        fetch(`${this.endpoint}/movie_reviews`)
         .then(resp => resp.json())
         .then(reviews => {debugger})
     }

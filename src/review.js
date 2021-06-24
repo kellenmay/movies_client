@@ -4,9 +4,10 @@ class Review {
     static reviewsContainer = document.getElementById("review-container")
     static reviewForm = document.getElementById("form-container")
 
-    constructor({reviewer, post, movie_id}){
+
+    constructor({reviewer, comment, movie_id}){
         this.reviewer = reviewer
-        this.post = post
+        this.comment = comment
         this.movie_id = movie_id
 
         this.element = document.createElement('span')
@@ -20,23 +21,39 @@ class Review {
         <h4>Review
     s: </h4>
         <ul>
-        <li>${this.reviewer} - ${this.post}</li>
+        <li>${this.reviewer} - ${this.comment}</li>
         </ul>
         `
         return this.element
     }
 
     static renderReviewForm() {
-        Movie.movieForm.innerHTML += `
+        return `
         <form id="new-movie-form">
         <input type="text" id="reviewer"> :Your reviewer
         <br>
-        <input type="text" id="post"> :post
+        <input type="text" id="comment"> :comment
         <br>
         <input type="submit" id="create">
         <form>
         `
     }
+
+    // static addReview() {
+    //     // base URL movies/id/movie_reviews -> nested hash 
+    //     const id = this.parentNode.parentNode.dataset.id
+    //     fetch(`${movieService.endpoint}/movies`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'            
+    //         },
+    //         body: JSON.stringify(review)
+    //     })
+        
+    //     .then(resp => resp.json())
+    //     .then(reviews => {debugger})
+
+    // }
 
 
 

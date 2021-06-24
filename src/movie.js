@@ -4,6 +4,7 @@ class Movie {
     static moviesContainer = document.getElementById("movie-container")
     static movieForm = document.getElementById("form-container")
 
+
     constructor({id, title, image_url, description}){
         this.id = id
         this.title = title
@@ -14,8 +15,6 @@ class Movie {
         this.element.dataset.id = this.id
         this.element.id = `movie-${this.id}`
         this.element.addEventListener('click', this.handleClickDelete)
-  
-   
 
         Movie.all.push(this)
     }
@@ -54,10 +53,6 @@ class Movie {
         `
     }
 
-
-
-
-
     handleClickDelete = () => {
         if (event.target.innerText === 'Delete'){
             this.element.remove()
@@ -66,12 +61,25 @@ class Movie {
     }
 
     handleClickReview = () => {
-
         Review.renderReviewForm()
+        const post = document.getElementById(event.target.parentNode.parentNode.id)
+        post.innerHTML += Review.renderReviewForm()
         event.target.removeEventListener('click', this.handleClickReview)
+        document.getElementById("create").addEventListener('click', reviewService.createReview)
         // toggle click on and off
         // add review to movie DIV
     }
+
+
+    // static showReview() {
+    //     // base URL movies/id/movie_reviews -> nested hash 
+    //     const id = this.parentNode.parentNode.dataset.id
+    //     fetch(`${movieService.endpoint}/movies/${id}/movie_reviews`)
+    //     .then(resp => resp.json())
+    //     .then(reviews => {})
+
+    // }
+
 
 }
 
