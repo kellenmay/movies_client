@@ -28,6 +28,9 @@ class Review {
     }
 
     static renderReviewForm() {
+
+        // relocate 
+        event.target.removeEventListener('click', this.handleClickReview)
         return `
         <form id="new-movie-form">
         <input type="text" id="reviewer"> :Your reviewer
@@ -37,6 +40,17 @@ class Review {
         <input type="submit" id="create">
         <form>
         `
+        // why is this faded
+        // handleSubmit()
+    }
+
+    static removeForm() {
+        const form = document.getElementById("new-movie-form")
+        form.remove
+    }
+
+    static handleSubmit(){
+        document.addEventListener('click', removeForm)
     }
 
     // static addReview() {

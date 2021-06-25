@@ -61,13 +61,22 @@ class Movie {
     }
 
     handleClickReview = () => {
-        Review.renderReviewForm()
+        //separate submit function or use conditionals
+        const r = Review.renderReviewForm()
+
         const post = document.getElementById(event.target.parentNode.parentNode.id)
-        post.innerHTML += Review.renderReviewForm()
-        event.target.removeEventListener('click', this.handleClickReview)
+        post.innerHTML += r    
+
         document.getElementById("create").addEventListener('click', reviewService.createReview)
+        
         // toggle click on and off
         // add review to movie DIV
+        // remove form after submitting review
+        // show all reviews for movie on click. add another div to inside movie-id div for this?
+    }
+    
+    handleSubmit(){
+        
     }
 
 
