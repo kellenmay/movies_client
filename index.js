@@ -12,6 +12,7 @@ Movie.renderForm()
 function handleSubmit() {
     event.preventDefault()
     movieService.createMovie()
+    
     event.target.reset()
 }
 

@@ -15,6 +15,7 @@ class Movie {
         this.element.dataset.id = this.id
         this.element.id = `movie-${this.id}`
         this.element.addEventListener('click', this.handleClickDelete)
+        this.element.addEventListener('click', this.handleShowAllReviews)
 
         Movie.all.push(this)
     }
@@ -27,6 +28,7 @@ class Movie {
                 <h3>${this.description}</h3>
             </div>
             <button id='delete-bttn'>Delete</button>
+            <button id='reviews-bttn'>Show All Reviews</button>
             <br>
             <br>
 
@@ -53,6 +55,13 @@ class Movie {
         `
     }
 
+    handleShowAllReviews = () => {
+      
+        if (event.target.innerText === 'Show All Reviews'){
+            movieService.showAllReviews(this.id)
+        }
+    }
+
     handleClickDelete = () => {
         if (event.target.innerText === 'Delete'){
             this.element.remove()
@@ -60,23 +69,28 @@ class Movie {
         }
     }
 
+
     handleClickReview = () => {
         //separate submit function or use conditionals
         const r = Review.renderReviewForm()
 
         const post = document.getElementById(event.target.parentNode.parentNode.id)
         post.innerHTML += r    
-
-        document.getElementById("create").addEventListener('click', reviewService.createReview)
+         document.getElementById("new-movie-form").addEventListener('submit', this.handleReviewSubmit)
+        // document.getElementById("create").addEventListener('click', handleReviewSubmit)
         
         // toggle click on and off
-        // add review to movie DIV
         // remove form after submitting review
         // show all reviews for movie on click. add another div to inside movie-id div for this?
     }
     
-    handleSubmit(){
-        
+
+
+    handleReviewSubmit(){
+        event.preventDefault()
+        reviewService.createReview(event.target.parentNode)
+        event.target.remove()
+        // 
     }
 
 

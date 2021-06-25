@@ -40,35 +40,13 @@ class Review {
         <input type="submit" id="create">
         <form>
         `
-        // why is this faded
-        // handleSubmit()
-    }
+        
+        }
 
-    static removeForm() {
+    static getReviewForm() {
+        
         const form = document.getElementById("new-movie-form")
         form.remove
     }
-
-    static handleSubmit(){
-        document.addEventListener('click', removeForm)
-    }
-
-    // static addReview() {
-    //     // base URL movies/id/movie_reviews -> nested hash 
-    //     const id = this.parentNode.parentNode.dataset.id
-    //     fetch(`${movieService.endpoint}/movies`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'            
-    //         },
-    //         body: JSON.stringify(review)
-    //     })
-        
-    //     .then(resp => resp.json())
-    //     .then(reviews => {debugger})
-
-    // }
-
-
 
 }

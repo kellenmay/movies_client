@@ -5,13 +5,12 @@ class ReviewService {
     }
 
 
-    createReview(){
-        event.preventDefault();
-       
+    createReview(element){
+    //    debugger;
         const review = {
             reviewer: document.getElementById('reviewer').value,
             comment: document.getElementById('comment').value,
-            movie_id: parseInt(this.parentNode.parentNode.dataset.id)
+            movie_id: parseInt(element.dataset.id)
         }
       
         const configObj = {
@@ -21,12 +20,12 @@ class ReviewService {
             },
             body: JSON.stringify(review)
         }
-          
+          // can I make this a div or span
         fetch(`${reviewService.endpoint}/movie_reviews`, configObj)
         .then(resp => resp.json())
         .then(review => {
             const r = new Review(review) 
-            this.parentNode.parentNode.innerHTML += `
+            element.innerHTML += `
                 ${r.reviewer}
                 ${r.comment}
             `

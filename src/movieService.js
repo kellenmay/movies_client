@@ -30,7 +30,7 @@
             },
             body: JSON.stringify(movie)
         }
-
+        
         fetch(`${this.endpoint}/movies`, configObj)
         .then(resp => resp.json())
         .then(movie => {
@@ -39,6 +39,14 @@
         })
         
     } 
+
+    showAllReviews(){
+        const movie = event.target.parentNode
+        fetch(`${this.endpoint}/movies/${movie.dataset.id}/movie_reviews`)
+        .then(resp => resp.json())
+        .then(json => alert(json.message))
+    }
+
         
     deleteMovie(id){
         fetch(`${this.endpoint}/movies/${id}`, {
@@ -48,6 +56,10 @@
             }
         })
         .then(resp => resp.json())
-        .then(json => {debugger})
+        .then(json => alert(json.message))
+    }
+
+    static sayHello(){
+
     }
 }
