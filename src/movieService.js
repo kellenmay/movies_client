@@ -44,7 +44,14 @@
         const movie = event.target.parentNode
         fetch(`${this.endpoint}/movies/${movie.dataset.id}/movie_reviews`)
         .then(resp => resp.json())
-        .then(json => alert(json.message))
+        .then(reviews => {
+            const r = new Review(reviews)
+        debugger;
+        // create a container that wil lhouse all movie reviews
+        // iterate over reviews (for loop)
+        // turn each ruby review objects into a JS objecy
+        // append them to container 
+        })
     }
 
         

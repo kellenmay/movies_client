@@ -39,6 +39,7 @@ class Movie {
     displayOnDOM(){
         Movie.moviesContainer.append(this.movieHTML())
         this.element.querySelector("img").addEventListener('click', this.handleClickReview) 
+        MovieService.showAllReviews.append(this.showAllReviews)
     }
 
     static renderForm() {

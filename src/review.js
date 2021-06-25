@@ -13,7 +13,8 @@ class Review {
         this.element = document.createElement('span')
         this.element.dataset.id = this.id
         this.element.id = `review-${this.id}`
-
+        // big all reviews container
+        // inside we have individual review containers
     }
 
     reviewHTML(){
