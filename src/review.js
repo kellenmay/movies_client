@@ -17,15 +17,17 @@ class Review {
         // inside we have individual review containers
     }
 
-    reviewHTML(){
-        this.element.innerHTML += `
-        <h4>Review
-    s: </h4>
+    static reviewHTML(review){
+       
+        const toPost = document.getElementById('reviews-container')
+        toPost.innerHTML += `
+        <h4>Reviews
+        </h4>
         <ul>
-        <li>${this.reviewer} - ${this.comment}</li>
+        <li>${review.reviewer} - ${review.comment}</li>
         </ul>
         `
-        return this.element
+        // return toPost
     }
 
     static renderReviewForm() {

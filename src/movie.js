@@ -27,6 +27,8 @@ class Movie {
                 <img id="movie-poster" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>
             </div>
+            <div id='reviews-container'>
+            </div>
             <button id='delete-bttn'>Delete</button>
             <button id='reviews-bttn'>Show All Reviews</button>
             <br>
@@ -39,7 +41,7 @@ class Movie {
     displayOnDOM(){
         Movie.moviesContainer.append(this.movieHTML())
         this.element.querySelector("img").addEventListener('click', this.handleClickReview) 
-        MovieService.showAllReviews.append(this.showAllReviews)
+        // MovieService.showAllReviews.append(this.showAllReviews)
     }
 
     static renderForm() {
@@ -95,14 +97,7 @@ class Movie {
     }
 
 
-    // static showReview() {
-    //     // base URL movies/id/movie_reviews -> nested hash 
-    //     const id = this.parentNode.parentNode.dataset.id
-    //     fetch(`${movieService.endpoint}/movies/${id}/movie_reviews`)
-    //     .then(resp => resp.json())
-    //     .then(reviews => {})
 
-    // }
 
 
 }

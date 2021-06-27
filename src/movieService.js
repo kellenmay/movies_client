@@ -42,11 +42,14 @@
 
     showAllReviews(){
         const movie = event.target.parentNode
+        
         fetch(`${this.endpoint}/movies/${movie.dataset.id}/movie_reviews`)
         .then(resp => resp.json())
         .then(reviews => {
-            const r = new Review(reviews)
-        debugger;
+            for (const review of reviews) {
+            const r = new Review(review)
+            Review.reviewHTML(r)            
+            }
         // create a container that wil lhouse all movie reviews
         // iterate over reviews (for loop)
         // turn each ruby review objects into a JS objecy
