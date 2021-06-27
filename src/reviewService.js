@@ -43,4 +43,25 @@ class ReviewService {
         .then(resp => resp.json())
         .then(reviews => {debugger})
     }
+
+
+
+        // how can I get the correct path for a comment
+        // need 2 id's 
+
+
+        deleteReview(id){
+            debugger;
+            fetch(`${this.endpoint}/movies/${this.movie_id}/movie_reviews/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(resp => resp.json())
+            .then(json => alert(json.message))
+        }
+
+
+
 }

@@ -13,18 +13,23 @@ class Review {
         this.element = document.createElement('span')
         this.element.dataset.id = this.id
         this.element.id = `review-${this.id}`
-        
+        this.element.addEventListener('click', this.handleClickDeleteReview)
+
         // inside we have individual review containers
     }
 
     static reviewHTML(review){
-       
+        
         const toPost = document.getElementById('review-container')
+        toPost.innerHTML = ""
         toPost.innerHTML += `
         <h2>Reviews</h2>
         <h4>${review.reviewer} </h4>
         <br>
         <ui> ${review.comment}</ui>
+        <br>
+        <br>
+        <button id='delete-review-bttn'>Delete Review</button>
         <br>
         <br>
         `
@@ -45,6 +50,16 @@ class Review {
         `
         
         }
+
+
+        handleClickDeleteReview = () => {
+            debugger;
+            if (event.target.innerText === 'Delete Review'){
+                this.element.remove()
+                reviewService.deleteReview(this.id)
+            }
+        }
+    
 
 
 

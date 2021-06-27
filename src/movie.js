@@ -33,7 +33,7 @@ class Movie {
     
             </div>
             </div>
-            <button id='delete-bttn'>Delete</button>
+            <button id='delete-bttn'>Delete Movie</button>
             <button id='reviews-bttn'>Show All Reviews</button>
             <br>
             <br>
@@ -68,12 +68,11 @@ class Movie {
     }
 
     handleClickDelete = () => {
-        if (event.target.innerText === 'Delete'){
+        if (event.target.innerText === 'Delete Movie'){
             this.element.remove()
             movieService.deleteMovie(this.id)
         }
     }
-
 
     handleClickReview = () => {
         const r = Review.renderReviewForm()
@@ -81,23 +80,14 @@ class Movie {
         post.innerHTML += r    
         document.getElementById("new-movie-form").addEventListener('submit', this.handleReviewSubmit)
         // document.getElementById("create").addEventListener('click', handleReviewSubmit)
-        
         // toggle click on and off
-
-
     }
     
-
 
     handleReviewSubmit(){
         event.preventDefault()
         reviewService.createReview(event.target.parentNode)
         event.target.remove()
     }
-
-
-
-
-
 }
 
