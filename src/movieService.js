@@ -50,10 +50,6 @@
             const r = new Review(review)
             Review.reviewHTML(r)            
             }
-        // create a container that wil lhouse all movie reviews
-        // iterate over reviews (for loop)
-        // turn each ruby review objects into a JS objecy
-        // append them to container 
         })
     }
 

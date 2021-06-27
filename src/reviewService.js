@@ -6,13 +6,12 @@ class ReviewService {
 
 
     createReview(element){
-    //    debugger;
+        // need to post this to review div
         const review = {
             reviewer: document.getElementById('reviewer').value,
             comment: document.getElementById('comment').value,
             movie_id: parseInt(element.dataset.id)
         }
-      
         const configObj = {
             method: 'POST',
             headers: {
@@ -25,14 +24,18 @@ class ReviewService {
         .then(resp => resp.json())
         .then(review => {
             const r = new Review(review) 
-            element.innerHTML += `
+            const toPost = document.getElementById('review-container')
+            toPost.innerHTML += `
                 ${r.reviewer}
+                <br>
                 ${r.comment}
             `
-            // r.displayOnDOM()
         })
+    }
 
-        
+    addReviewToContainer() {
+        const container = document.getElementById("review-container")
+        this.createReview(element)
     }
 
     getReviews(){
