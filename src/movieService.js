@@ -42,13 +42,12 @@
 
     showAllReviews(){
         const movie = event.target.parentNode
-        
         fetch(`${this.endpoint}/movies/${movie.dataset.id}/movie_reviews`)
         .then(resp => resp.json())
         .then(reviews => {
             for (const review of reviews) {
             const r = new Review(review)
-            Review.reviewHTML(r)            
+            Review.reviewHTML(r)       
             }
         })
     }

@@ -4,7 +4,6 @@ class ReviewService {
         this.endpoint = endpoint
     }
 
-
     createReview(element){
         // need to post this to review div
         const review = {
@@ -23,8 +22,9 @@ class ReviewService {
         fetch(`${reviewService.endpoint}/movie_reviews`, configObj)
         .then(resp => resp.json())
         .then(review => {
-            const r = new Review(review) 
-            const toPost = document.getElementById('review-container')
+            const r = new Review(review)
+            // grab movie id 
+            const toPost = document.getElementById(`reviews-container-${element.dataset.id}`)
             toPost.innerHTML += `
                 ${r.reviewer}
                 <br>
@@ -44,15 +44,11 @@ class ReviewService {
         .then(reviews => {debugger})
     }
 
-
-
         // how can I get the correct path for a comment
         // need 2 id's 
 
-
-        deleteReview(id){
-            debugger;
-            fetch(`${this.endpoint}/movies/${this.movie_id}/movie_reviews/${id}`, {
+        deleteReview(movie, id){
+            fetch(`${this.endpoint}/movies/${movie}/movie_reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +57,4 @@ class ReviewService {
             .then(resp => resp.json())
             .then(json => alert(json.message))
         }
-
-
-
 }

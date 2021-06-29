@@ -27,11 +27,8 @@ class Movie {
                 <img id="movie-poster" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>
             </div>
-            <div id='reviews-container'>
-            <div id="review-container">
-
-    
-            </div>
+            <div id='reviews-container-${this.id}'>
+            <h2>Reviews</h2>
             </div>
             <button id='delete-bttn'>Delete Movie</button>
             <button id='reviews-bttn'>Show All Reviews</button>
@@ -39,6 +36,7 @@ class Movie {
             <br>
 
         `
+        // data-id gives dataset_id (.dataset) not an id
         return this.element
     }
 
@@ -62,7 +60,9 @@ class Movie {
     }
 
     handleShowAllReviews = () => {
+        const post = event.target.parentNode
         if (event.target.innerText === 'Show All Reviews'){
+            debugger
             movieService.showAllReviews(this.id)
         }
     }
