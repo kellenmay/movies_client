@@ -5,6 +5,7 @@ const reviewService = new ReviewService(base_url)
 Movie.movieForm.addEventListener('submit', handleSubmit)
 
 
+
 movieService.getMovies()
 
 Movie.renderForm()

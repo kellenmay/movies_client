@@ -42,13 +42,28 @@
 
     showAllReviews(){
         const movie = event.target.parentNode
+        const post = document.getElementById(`reviews-container-${movie.dataset.id}`)
         fetch(`${this.endpoint}/movies/${movie.dataset.id}/movie_reviews`)
         .then(resp => resp.json())
         .then(reviews => {
+            post.innerHTML = ""
             for (const review of reviews) {
             const r = new Review(review)
-            Review.reviewHTML(r)       
+            post.innerHTML += ` 
+            <div data-id="review-container-${r.id}", id="review-container-${r.id}"> 
+            ${r.reviewer}
+            <br>
+            ${r.comment}
+            <br>
+            <br>
+            <button id='delete-review-bttn'>Delete Review</button>  
+            <br>
+            <br>
+            </div>  
+            `
+            document.querySelector('#delete-review-bttn').addEventListener('click', r.handleClickDeleteReview)
             }
+            
         })
     }
 
@@ -62,9 +77,5 @@
         })
         .then(resp => resp.json())
         .then(json => alert(json.message))
-    }
-
-    static sayHello(){
-
     }
 }

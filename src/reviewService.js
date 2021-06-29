@@ -29,6 +29,7 @@ class ReviewService {
                 ${r.reviewer}
                 <br>
                 ${r.comment}
+                
             `
         })
     }
@@ -56,5 +57,6 @@ class ReviewService {
             })
             .then(resp => resp.json())
             .then(json => alert(json.message))
+
         }
 }

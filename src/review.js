@@ -21,22 +21,16 @@ class Review {
     static reviewHTML(review){
         // find movie ID here
 
-    let movie = review.movie_id
-    const toPost = document.getElementById(`reviews-container-${movie}`)
-    toPost.innerHTML = ""
-    toPost.innerHTML += `
-        <div data-id="review-container-${review.id}", id="review-container-${review.id}">
+        let movie = review.movie_id
+        const toPost = document.getElementById(`reviews-container-${movie}`)
+        toPost.innerHTML = ""
+        toPost.innerHTML += `
         <h4>${review.reviewer} </h4>
         <br>
         <ui> ${review.comment}</ui>
         <br>
         <br>
-        <button id='delete-review-bttn'>Delete Review</button>  
-        <br>
-        <br>
-        </div>
         `
-    document.querySelector('#delete-review-bttn').addEventListener('click', review.handleClickDeleteReview)
     }
 
     static renderReviewForm() {
@@ -51,18 +45,18 @@ class Review {
         <input type="submit" id="create">
         <form>
         `
+        
         }
 
 
         handleClickDeleteReview = () => {  
-            let movieID = parseInt(event.target.parentNode.parentNode.dataset.id)
-            if (event.target.innerText === 'Delete Review'){
+            let movieID = parseInt(event.target.parentNode.parentNode.parentNode.dataset.id)
+            if (event.target.innerText === 'Delete Review'){   
+                debugger 
                 event.target.parentNode.remove() 
                 reviewService.deleteReview(movieID, this.id)
             }
         }
-    
-
 
 
 }
