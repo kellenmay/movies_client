@@ -46,11 +46,35 @@ class Review {
         <form>
         `
         
+        
         }
+
+    appendReviewtoDom() {
+        const movie = event.target.parentNode
+        const post = document.getElementById(`reviews-container-${movie.dataset.id}`)
+        post.innerHTML += ` 
+        <div data-id="review-container-${this.id}", id="review-container-${this.id}"> 
+        ${this.reviewer}
+        <br>
+        ${this.comment}
+        <br>
+        <br>
+        <button class='deleteBttn' id='delete-review-bttn-${this.id}'>Delete Review</button>  
+        <br>
+        <br>
+        </div>  
+        `
+        const deleteButtons = document.querySelectorAll('.deleteBttn')
+        for( const deleteButton of deleteButtons) {
+            deleteButton.addEventListener('click', this.handleClickDeleteReview)
+        }
+        // debugger
+
+    }
 
 
     handleClickDeleteReview = (event) => { 
-        console.log("hit")
+       
         let movieID = parseInt(event.target.parentNode.parentNode.parentNode.dataset.id)
         if (event.target.innerText === 'Delete Review'){  
             event.target.parentNode.remove() 

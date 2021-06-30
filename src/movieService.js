@@ -49,25 +49,11 @@ showAllReviews(){
         post.innerHTML = ""
         for (const review of reviews) {
         const r = new Review(review)
-        post.innerHTML += ` 
-        <div data-id="review-container-${r.id}", id="review-container-${r.id}"> 
-        ${r.reviewer}
-        <br>
-        ${r.comment}
-        <br>
-        <br>
-        <button id='delete-review-bttn-${r.id}'>Delete Review</button>  
-        <br>
-        <br>
-        </div>  
-        `
-        // debugger
-        document.getElementById(`delete-review-bttn-${r.id}`).addEventListener('click', (event) => r.handleClickDeleteReview(event))
-        }
-        
-    })
+        r.appendReviewtoDom()
+    
+    }
+})
 }
-
     
 deleteMovie(id){
     fetch(`${this.endpoint}/movies/${id}`, {
@@ -79,4 +65,4 @@ deleteMovie(id){
     .then(resp => resp.json())
     .then(json => alert(json.message))
 }
-}
+ }
