@@ -5,7 +5,6 @@ const reviewService = new ReviewService(base_url)
 Movie.movieForm.addEventListener('submit', handleSubmit)
 
 
-
 movieService.getMovies()
 
 Movie.renderForm()
@@ -17,3 +16,7 @@ function handleSubmit() {
     event.target.reset()
 }
 
+
+
+// id="movie-poster-${this.id}"
+// event.target.parentElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', Review.renderReviewForm)

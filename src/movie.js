@@ -24,17 +24,15 @@ class Movie {
         this.element.innerHTML += `
             <div>
                 <h3>${this.title}</h3>
-                <img id="movie-poster" src='${this.image_url}' width = 150px />
+                <img id="movie-poster-${this.id}" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>
             </div>
             <div id='reviews-container-${this.id}'>
-
             </div>
             <button id='delete-bttn'>Delete Movie</button>
             <button id='reviews-bttn'>Show All Reviews</button>
             <br>
             <br>
-
         `
         // data-id gives dataset_id (.dataset) not an id
         return this.element
@@ -88,4 +86,3 @@ class Movie {
         event.target.remove()
     }
 }
-
