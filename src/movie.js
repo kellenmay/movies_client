@@ -75,6 +75,7 @@ class Movie {
         const post = document.getElementById(event.target.parentNode.parentNode.id)
         post.innerHTML += r    
         document.getElementById("new-movie-form").addEventListener('submit', this.handleReviewSubmit)
+        
         // document.getElementById("create").addEventListener('click', handleReviewSubmit)
         // toggle click on and off
     }
@@ -83,6 +84,8 @@ class Movie {
     handleReviewSubmit(){
         event.preventDefault()
         reviewService.createReview(event.target.parentNode)
+        debugger
+        event.target.parentElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', Review.renderReviewForm)
         event.target.remove()
     }
 }

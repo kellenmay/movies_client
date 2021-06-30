@@ -49,13 +49,14 @@ class Review {
         }
 
 
-        handleClickDeleteReview = () => {  
-            let movieID = parseInt(event.target.parentNode.parentNode.parentNode.dataset.id)
-            if (event.target.innerText === 'Delete Review'){  
-                event.target.parentNode.remove() 
-                reviewService.deleteReview(movieID, this.id)
-            }
+    handleClickDeleteReview = (event) => { 
+        console.log("hit")
+        let movieID = parseInt(event.target.parentNode.parentNode.parentNode.dataset.id)
+        if (event.target.innerText === 'Delete Review'){  
+            event.target.parentNode.remove() 
+            reviewService.deleteReview(movieID, this.id)
         }
+    }
 
 
 }

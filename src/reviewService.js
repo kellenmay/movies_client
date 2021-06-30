@@ -34,6 +34,7 @@ class ReviewService {
     addReviewToContainer() {
         const container = document.getElementById("review-container")
         this.createReview(element)
+        debugger
         
     }
 

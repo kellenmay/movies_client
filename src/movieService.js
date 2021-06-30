@@ -56,13 +56,13 @@ showAllReviews(){
         ${r.comment}
         <br>
         <br>
-        <button id='delete-review-bttn'>Delete Review</button>  
+        <button id='delete-review-bttn-${r.id}'>Delete Review</button>  
         <br>
         <br>
         </div>  
         `
-
-        document.querySelector("#delete-review-bttn").addEventListener('click', r.handleClickDeleteReview)
+        // debugger
+        document.getElementById(`delete-review-bttn-${r.id}`).addEventListener('click', (event) => r.handleClickDeleteReview(event))
         }
         
     })
