@@ -1,25 +1,18 @@
 class Movie {
-
     static all = []
-    static moviesContainer = document.getElementById("movie-container")
-    static movieForm = document.getElementById("form-container")
-
-
     constructor({id, title, image_url, description}){
         this.id = id
         this.title = title
         this.image_url = image_url
         this.description = description
-
         this.element = document.createElement('div')
         this.element.dataset.id = this.id
         this.element.id = `movie-${this.id}`
         this.element.addEventListener('click', this.handleClickDelete)
         this.element.addEventListener('click', this.handleShowAllReviews)
-
         Movie.all.push(this)
     }
-
+    // creates movie html
     movieHTML(){
         this.element.innerHTML += `
             <div>
@@ -37,14 +30,14 @@ class Movie {
         // data-id gives dataset_id (.dataset) not an id
         return this.element
     }
-
+    // renders movie to dom
     displayOnDOM(){
-        Movie.moviesContainer.append(this.movieHTML())
+        moviesContainer.append(this.movieHTML())
         this.element.querySelector("img").addEventListener('click', this.handleClickReview) 
     }
-
+    // renders movie form and adds event listener to it
     static renderForm() {
-        Movie.movieForm.innerHTML += `
+        movieForm.innerHTML += `
         <form id="new-movie-form">
         <input type="text" id="title"> :Title
         <br>
@@ -55,36 +48,40 @@ class Movie {
         <input type="submit" id="create">
         <form>
         `
+        movieForm.addEventListener('submit', this.handleSubmit)
     }
-
-    handleShowAllReviews = () => {
-        if (event.target.innerText === 'Show All Reviews'){
-            movieService.showAllReviews(this.id)
-        }
+    // handles new movie form submission
+    static handleSubmit(){
+        event.preventDefault()
+        movieService.createMovie()
+        event.target.reset()
     }
-
+    // deletes movie 
     handleClickDelete = () => {
         if (event.target.innerText === 'Delete Movie'){
             this.element.remove()
             movieService.deleteMovie(this.id)
         }
     }
-
+    // shows selected movie's reviews 
+    handleShowAllReviews = () => {
+        if (event.target.innerText === 'Show All Reviews'){
+            movieService.showAllReviews(this.id)
+        }
+    }
+    //what does this do
     handleClickReview = () => {
         const r = Review.renderReviewForm()
         const post = document.getElementById(event.target.parentNode.parentNode.id)
         post.innerHTML += r    
         document.getElementById("new-movie-form").addEventListener('submit', this.handleReviewSubmit)
-        
         // document.getElementById("create").addEventListener('click', handleReviewSubmit)
         // toggle click on and off
     }
-    
-
+    // movie review submission
     handleReviewSubmit(){
         event.preventDefault()
         reviewService.createReview(event.target.parentNode)
-        debugger
         event.target.parentElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', Review.renderReviewForm)
         event.target.remove()
     }

@@ -1,9 +1,7 @@
 class ReviewService {
-
     constructor(endpoint){
         this.endpoint = endpoint
     }
-
     createReview(element){
         const review = {
             reviewer: document.getElementById('reviewer').value,
@@ -26,24 +24,19 @@ class ReviewService {
                 ${r.reviewer}
                 <br>
                 ${r.comment}
-                
             `
         })
     }
-
     addReviewToContainer() {
         const container = document.getElementById("review-container")
         this.createReview(element)
         debugger
-        
     }
-
     getReviews(){
         fetch(`${this.endpoint}/movie_reviews`)
         .then(resp => resp.json())
         .then(reviews => {debugger})
     }
-
         deleteReview(movie, id){
             fetch(`${this.endpoint}/movies/${movie}/movie_reviews/${id}`, {
                 method: 'DELETE',
@@ -53,6 +46,5 @@ class ReviewService {
             })
             .then(resp => resp.json())
             .then(json => alert(json.message))
-
         }
 }
