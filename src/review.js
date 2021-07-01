@@ -5,6 +5,7 @@ class Review {
         this.reviewer = reviewer
         this.comment = comment
         this.movie_id = movie_id
+        
         this.id = id
         this.element = document.createElement('span')
         this.element.dataset.id = this.id
@@ -28,11 +29,11 @@ class Review {
         event.target.removeEventListener('click', this.handleClickReview)
         return `
         <form id="new-movie-form">
-            <input type="text" id="reviewer"> :Your reviewer
+            <input type="text" id="reviewer" class=border> :Your reviewer
             <br>
-            <input type="text" id="comment"> :comment
+            <input type="text" id="comment" class=border> :comment
             <br>
-            <input type="submit" id="create">
+            <input type="submit" id="create" class="bg-gray-500 text-white font-bold rounded">
         <form>
         `
     }

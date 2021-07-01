@@ -5,6 +5,7 @@ class Movie {
         this.title = title
         this.image_url = image_url
         this.description = description
+            
         this.element = document.createElement('div')
         this.element.dataset.id = this.id
         this.element.id = `movie-${this.id}`
@@ -39,13 +40,13 @@ class Movie {
     static renderForm() {
         movieForm.innerHTML += `
         <form id="new-movie-form">
-        <input type="text" id="title"> :Title
+        <input type="text" id="title" class=border> :Title
         <br>
-        <input type="text" id="image_url"> :Poster
+        <input type="text" id="image_url" class=border> :Poster
         <br>
-        <input type="text" id="description"> :Description
+        <input type="text" id="description" class=border> :Description
         <br>
-        <input type="submit" id="create">
+        <input type="submit" id="create" class="bg-gray-500 text-white font-bold rounded">
         <form>
         `
         movieForm.addEventListener('submit', this.handleSubmit)
