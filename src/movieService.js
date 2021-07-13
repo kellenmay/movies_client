@@ -1,17 +1,19 @@
 class MovieService {
-        constructor(endpoint){
-            this.endpoint = endpoint
+    constructor(endpoint){
+        this.endpoint = endpoint
+    }
+
+    getMovies(){
+    fetch(`${this.endpoint}/movies`)
+    .then(resp => resp.json())
+    .then(movies => {
+        for (const movie of movies){
+            const m = new Movie(movie) 
+            m.displayOnDOM()
         }
-        getMovies(){
-        fetch(`${this.endpoint}/movies`)
-        .then(resp => resp.json())
-        .then(movies => {
-            for (const movie of movies){
-                const m = new Movie(movie) 
-                m.displayOnDOM()
-            }
-        })
-        }
+    })
+    }
+
     createMovie(){
         const movie = {
             title: document.getElementById('title').value,
@@ -32,6 +34,7 @@ class MovieService {
             m.displayOnDOM()
         })
     } 
+
     showAllReviews(){
         const movie = event.target.parentNode
         const post = document.getElementById(`reviews-container-${movie.dataset.id}`)
@@ -45,6 +48,7 @@ class MovieService {
         }
     })
     }
+    
     deleteMovie(id){
         fetch(`${this.endpoint}/movies/${id}`, {
             method: 'DELETE',

@@ -15,16 +15,17 @@ class Movie {
     }
     // creates movie html
     movieHTML(){
+
         this.element.innerHTML += `
-            <div>
+            <div class="border-solid border-2 border-blue-600 h-full ">
                 <h3>${this.title}</h3>
                 <img id="movie-poster-${this.id}" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>
             </div>
             <div id='reviews-container-${this.id}'>
             </div>
-            <button id='delete-bttn'>Delete Movie</button>
-            <button id='reviews-bttn'>Show All Reviews</button>
+            <button id='delete-bttn' class="bg-gray-500 text-white font-bold rounded">Delete Movie</button>
+            <button id='reviews-bttn' class="bg-gray-500 text-white font-bold rounded">Show All Reviews</button>
             <br>
             <br>
         `
@@ -51,12 +52,14 @@ class Movie {
         `
         movieForm.addEventListener('submit', this.handleSubmit)
     }
+
     // handles new movie form submission
     static handleSubmit(){
         event.preventDefault()
         movieService.createMovie()
         event.target.reset()
     }
+    
     // deletes movie 
     handleClickDelete = () => {
         if (event.target.innerText === 'Delete Movie'){

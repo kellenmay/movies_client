@@ -46,7 +46,7 @@ class Review {
                 ${this.comment}
                 <br>
                 <br>
-                <button class='deleteBttn' id='delete-review-bttn-${this.id}'>Delete Review</button>  
+                <button class='deleteBttn' id='delete-review-bttn-${this.id}' class="bg-gray-500 text-white font-bold rounded" >Delete Review</button>  
                 <br>
                 <br>
             </div>  
@@ -58,8 +58,10 @@ class Review {
         }
     }
     handleClickDeleteReview = (event) => { 
+            // this div is the div of the indiviual move
         let movieID = parseInt(event.target.parentNode.parentNode.parentNode.dataset.id)
         if (event.target.innerText === 'Delete Review'){  
+            // this div is the div of the individual review 
             event.target.parentNode.remove() 
             reviewService.deleteReview(movieID, this.id)
         }
