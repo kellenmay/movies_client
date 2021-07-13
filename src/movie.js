@@ -17,7 +17,7 @@ class Movie {
     movieHTML(){
 
         this.element.innerHTML += `
-            <div class="border-solid border-2 border-blue-600 h-full ">
+            <div >
                 <h3>${this.title}</h3>
                 <img id="movie-poster-${this.id}" src='${this.image_url}' width = 150px />
                 <h3>${this.description}</h3>

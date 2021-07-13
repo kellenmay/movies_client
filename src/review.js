@@ -29,7 +29,7 @@ class Review {
         event.target.removeEventListener('click', this.handleClickReview)
         return `
         <form id="new-movie-form">
-            <input type="text" id="reviewer" class=border> :Your reviewer
+            <input type="text" id="reviewer" class=border> :Your Name
             <br>
             <input type="text" id="comment" class=border> :comment
             <br>
