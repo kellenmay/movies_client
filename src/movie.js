@@ -1,5 +1,6 @@
 class Movie {
     static all = []
+    
     constructor({id, title, image_url, description}){
         this.id = id
         this.title = title
@@ -15,8 +16,7 @@ class Movie {
     }
     // creates movie html
     movieHTML(){
-
-        this.element.innerHTML += `
+        this.element.innerHTML += ` 
             <div >
                 <h3>${this.title}</h3>
                 <img id="movie-poster-${this.id}" src='${this.image_url}' width = 150px />
@@ -37,6 +37,7 @@ class Movie {
         moviesContainer.append(this.movieHTML())
         this.element.querySelector("img").addEventListener('click', this.handleClickReview) 
     }
+
     // renders movie form and adds event listener to it
     static renderForm() {
         movieForm.innerHTML += `
@@ -51,6 +52,7 @@ class Movie {
         <form>
         `
         movieForm.addEventListener('submit', this.handleSubmit)
+        
     }
 
     // handles new movie form submission
@@ -89,4 +91,13 @@ class Movie {
         event.target.parentElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', Review.renderReviewForm)
         event.target.remove()
     }
+    
+    handleAlphabetize = () => {
+        debugger
+    }
+
+
 }
+
+
+

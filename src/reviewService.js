@@ -30,13 +30,12 @@ class ReviewService {
     addReviewToContainer() {
         const container = document.getElementById("review-container")
         this.createReview(element)
-        debugger
     }
-    getReviews(){
-        fetch(`${this.endpoint}/movie_reviews`)
-        .then(resp => resp.json())
-        .then(reviews => {debugger})
-    }
+    // getReviews(){
+    //     fetch(`${this.endpoint}/movie_reviews`)
+    //     .then(resp => resp.json())
+    //     .then(reviews => {debugger})
+    // }
         deleteReview(movie, id){
             fetch(`${this.endpoint}/movies/${movie}/movie_reviews/${id}`, {
                 method: 'DELETE',

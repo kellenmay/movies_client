@@ -6,6 +6,7 @@ class MovieService {
     getMovies(){
     fetch(`${this.endpoint}/movies`)
     .then(resp => resp.json())
+    //.json returns a promise that resolves to the parsed json body
     .then(movies => {
         for (const movie of movies){
             const m = new Movie(movie) 
@@ -20,6 +21,9 @@ class MovieService {
             image_url: document.getElementById('image_url').value,
             description: document.getElementById('description').value
         }
+        // when making a fetch request to back end we have to configure the method we have to run, here we use POST default is GET, 
+        // header is content we pass in/get back
+        // body is stringified to get sent to back end (Ruby notation)
         const configObj = {
             method: 'POST',
             headers: {
@@ -27,6 +31,7 @@ class MovieService {
             },
             body: JSON.stringify(movie)
         }
+        // configObj passes the data that was created as well as defining that it was a POST request
         fetch(`${this.endpoint}/movies`, configObj)
         .then(resp => resp.json())
         .then(movie => {
